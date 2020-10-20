@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://psxshaders/psx_lit.shader" type="Shader" id=1]
+
+[sub_resource type="OpenSimplexNoise" id=26]
+seed = 7
+octaves = 1
+period = 3.0
+persistence = 0.0
+lacunarity = 0.1
+
+[sub_resource type="NoiseTexture" id=27]
+flags = 35
+width = 3
+height = 6
+noise = SubResource( 26 )
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/specular_intensity = 0.0
+shader_param/resolution = 64.0
+shader_param/cull_distance = 20.0
+shader_param/uv_scale = Vector2( 200, 10 )
+shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/albedoTex = SubResource( 27 )

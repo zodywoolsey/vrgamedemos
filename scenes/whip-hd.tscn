@@ -1,0 +1,525 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="BoxShape" id=1]
+margin = 0.001
+extents = Vector3( 0.015, 0.05, 0.015 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.03, 0.1, 0.03 )
+
+[sub_resource type="BoxShape" id=3]
+margin = 0.001
+extents = Vector3( 0.025, 0.025, 0.025 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.05, 0.05, 0.05 )
+
+[node name="whip-hd" type="Spatial"]
+
+[node name="whipHandle" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipHandle"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipHandle/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipHandle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0478261, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink1")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink1" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink1"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink1/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink2")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink2"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink2/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink3")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink3"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink3/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink4")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink4" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink4"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink4/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink5")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink5" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink5"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink5/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink6")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink6" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink6"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink6/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink7")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="whipLink7" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink7"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink7/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink8")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink8" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink8"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink8/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink9")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink9" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink9"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink9/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink10")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink10" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink10"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink10/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink11")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink11" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.599832, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink11"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink11/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink12")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink12" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.649832, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink12"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink12/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink13")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink13" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699832, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink13"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink13/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink14")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink14" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.749832, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink14"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink14/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink15")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink15" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.799832, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink15"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink15/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink15"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink16")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink16" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849832, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink16"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink16/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink16"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink17")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="whipLink17" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.899832, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink17"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink17/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink18")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink18" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.949832, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink18"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink18/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink19")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink19" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999832, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink19"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink19/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink19"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../whipLink20")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0
+
+[node name="whipLink20" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04983, 0 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="whipLink20"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="whipLink20/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="whipLink20"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0 )
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_y/upper_angle = 15.0
+angular_limit_y/lower_angle = -15.0
+angular_limit_z/upper_angle = 15.0
+angular_limit_z/lower_angle = -15.0

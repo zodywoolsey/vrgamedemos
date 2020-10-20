@@ -1,0 +1,4 @@
+#Mon Oct 19 08:42:50 CDT 2020
+base.0=C\:\\Users\\zodyw\\Documents\\GitHub\\impostersvr\\android\\build\\build\\intermediates\\dex\\release\\mergeDexRelease\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

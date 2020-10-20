@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="BoxShape" id=2]
+margin = 0.001
+extents = Vector3( 0.5, 0.025, 0.5 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+octaves = 6
+period = 0.1
+persistence = 0.0
+lacunarity = 3.79
+
+[sub_resource type="NoiseTexture" id=4]
+width = 8
+height = 8
+noise = SubResource( 3 )
+
+[sub_resource type="OpenSimplexNoise" id=5]
+period = 0.1
+persistence = 0.0
+
+[sub_resource type="NoiseTexture" id=6]
+width = 20
+height = 20
+noise = SubResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.294118, 0.145098, 0.0470588, 1 )
+albedo_texture = SubResource( 4 )
+metallic_specular = 1.0
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 6 )
+
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
+size = Vector3( 1, 0.05, 1 )
+
+[node name="floorTileSpatial" type="Spatial"]
+
+[node name="floorTile" type="StaticBody" parent="."]
+input_ray_pickable = false
+physics_material_override = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="floorTile"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="floorTile/CollisionShape"]
+mesh = SubResource( 8 )
+material/0 = null

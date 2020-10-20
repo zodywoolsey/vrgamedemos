@@ -1,0 +1,446 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://levels/NavMeshCollisionParser.gd" type="Script" id=1]
+[ext_resource path="res://levels/scifiwalls.tres" type="Material" id=2]
+[ext_resource path="res://levels/Area.gd" type="Script" id=3]
+
+[sub_resource type="NavigationMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 20, 0.1, 20 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.1, 6, 6 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.1, 6, 20 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 0.1, 6, 6 )
+
+[sub_resource type="CubeMesh" id=6]
+material = ExtResource( 2 )
+size = Vector3( 6, 6, 0.1 )
+
+[sub_resource type="CubeMesh" id=7]
+size = Vector3( 6, 6, 0.1 )
+
+[sub_resource type="CubeMesh" id=8]
+size = Vector3( 0.1, 0.3, 2 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CubeMesh" id=13]
+material = SubResource( 14 )
+size = Vector3( 0.1, 4, 2 )
+
+[sub_resource type="CubeMesh" id=11]
+size = Vector3( 3, 0.1, 6 )
+
+[sub_resource type="CubeMesh" id=12]
+size = Vector3( 2, 0.1, 2 )
+
+[sub_resource type="SphereMesh" id=9]
+radius = 0.2
+height = 0.4
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereShape" id=10]
+margin = 0.001
+radius = 0.2
+
+[sub_resource type="BoxShape" id=15]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance25" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -13 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -7 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, -7 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, -7 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, -17 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance11" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, 3 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 0 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 3, -3 )
+mesh = SubResource( 6 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 3, -3 )
+mesh = SubResource( 6 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 3 )
+mesh = SubResource( 7 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance12" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 8, 0.0834445, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="MeshInstance13" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 6, 0.0834445, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="MeshInstance14" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( -4.37114e-08, 0, -1, -0.707107, 0.707107, 3.09086e-08, 0.707107, 0.707107, -3.09086e-08, 7, 0.0834447, -1 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="MeshInstance15" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( -4.37114e-08, 0, -1, 0.707107, 0.707107, -3.09086e-08, 0.707107, -0.707107, -3.09086e-08, 7, 0.0834447, 1 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="MeshInstance20" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1.96969, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="MeshInstance21" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1.96969, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="MeshInstance22" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, -1.96969, -1 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="MeshInstance23" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, -1.96969, 1 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="MeshInstance16" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0 )
+mesh = SubResource( 11 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance17" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 0 )
+mesh = SubResource( 11 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance18" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 2 )
+mesh = SubResource( 12 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance24" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4, 0 )
+mesh = SubResource( 12 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance19" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2 )
+mesh = SubResource( 12 )
+material/0 = ExtResource( 2 )
+
+[node name="RigidBody2" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.40419, 0.416242, -0.257492 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody2"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody2"]
+shape = SubResource( 10 )
+
+[node name="RigidBody4" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88767, 0.416242, 0.272197 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody4"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody4"]
+shape = SubResource( 10 )
+
+[node name="RigidBody6" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88767, 0.416242, 0.795188 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody6"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody6"]
+shape = SubResource( 10 )
+
+[node name="RigidBody8" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82294, 0.416242, -0.257492 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody8"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody8"]
+shape = SubResource( 10 )
+
+[node name="RigidBody10" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 0.865256, 0, 0.50133, 0, 1, 0, -0.50133, 0, 0.865256, 4.39928, 0.843675, 0.247238 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody10"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody10"]
+shape = SubResource( 10 )
+
+[node name="RigidBody12" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 0.865256, 0, 0.50133, 0, 1, 0, -0.50133, 0, 0.865256, 4.66147, 0.843675, 0.69976 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody12"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody12"]
+shape = SubResource( 10 )
+
+[node name="RigidBody14" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 0.865256, 0, 0.50133, 0, 1, 0, -0.50133, 0, 0.865256, 4.55207, 0.843675, -0.453463 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody14"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody14"]
+shape = SubResource( 10 )
+
+[node name="RigidBody16" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 0.865256, 0, 0.50133, 0, 1, 0, -0.50133, 0, 0.865256, 3.89635, 0.843675, 0.538637 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody16"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody16"]
+shape = SubResource( 10 )
+
+[node name="RigidBody18" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 0.865256, 0, 0.50133, 0, 1, 0, -0.50133, 0, 0.865256, 4.15854, 0.843675, 0.991159 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody18"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody18"]
+shape = SubResource( 10 )
+
+[node name="RigidBody20" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 0.997435, 0, -0.0715845, 0, 1, 0, 0.0715845, 0, 0.997435, 4.44174, 1.24769, -0.252642 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody20"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody20"]
+shape = SubResource( 10 )
+
+[node name="RigidBody22" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 0.997435, 0, -0.0715845, 0, 1, 0, 0.0715845, 0, 0.997435, 4.88606, 1.24769, 0.310297 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody22"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody22"]
+shape = SubResource( 10 )
+
+[node name="RigidBody24" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 0.997435, 0, -0.0715845, 0, 1, 0, 0.0715845, 0, 0.997435, 4.84863, 1.24769, 0.831947 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody24"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody24"]
+shape = SubResource( 10 )
+
+[node name="RigidBody26" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 0.997435, 0, -0.0715845, 0, 1, 0, 0.0715845, 0, 0.997435, 3.86198, 1.24769, -0.294251 )
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody26"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody26"]
+shape = SubResource( 10 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -3.12585, 0 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 15 )
+[connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="Area" method="_on_Area_body_exited"]

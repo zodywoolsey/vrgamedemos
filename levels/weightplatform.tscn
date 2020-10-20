@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+octaves = 9
+period = 0.1
+persistence = 0.536
+lacunarity = 0.1
+
+[sub_resource type="NoiseTexture" id=2]
+width = 64
+seamless = true
+noise = SubResource( 1 )
+
+[sub_resource type="NoiseTexture" id=3]
+flags = 3
+width = 1
+height = 64
+as_normalmap = true
+noise = SubResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+albedo_texture = SubResource( 2 )
+metallic = 1.0
+metallic_texture = SubResource( 3 )
+metallic_texture_channel = 2
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 3 )
+uv1_triplanar = true
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+size = Vector3( 0.5, 0.025, 0.5 )
+
+[sub_resource type="ConvexPolygonShape" id=6]
+margin = 0.001
+points = PoolVector3Array( -0.25, 0.0125, 0.25, 0.25, 0.0125, -0.25, 0.25, 0.0125, 0.25, -0.25, 0.0125, -0.25, -0.25, -0.0125, 0.25, 0.25, -0.0125, -0.25, 0.25, -0.0125, 0.25, -0.25, -0.0125, -0.25, 0.25, 0.0125, 0.25, -0.25, 0.0125, -0.25, 0.25, 0.0125, -0.25, -0.25, 0.0125, 0.25, 0.25, -0.0125, 0.25, -0.25, -0.0125, -0.25, 0.25, -0.0125, -0.25, -0.25, -0.0125, 0.25, 0.25, 0.0125, 0.25, -0.25, -0.0125, 0.25, -0.25, 0.0125, 0.25, 0.25, -0.0125, 0.25, 0.25, 0.0125, -0.25, -0.25, -0.0125, -0.25, -0.25, 0.0125, -0.25, 0.25, -0.0125, -0.25 )
+
+[sub_resource type="BoxShape" id=7]
+margin = 0.001
+extents = Vector3( 0.1, 0.1, 0.1 )
+
+[node name="weightplatform" type="Spatial"]
+
+[node name="RigidBody" type="RigidBody" parent="."]
+continuous_cd = true
+contact_monitor = true
+linear_damp = 0.5
+angular_damp = 0.5
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 6 )
+
+[node name="RigidBody2" type="RigidBody" parent="."]
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody2"]
+shape = SubResource( 7 )
+disabled = true
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="."]
+nodes/node_a = NodePath("../RigidBody")
+nodes/node_b = NodePath("../RigidBody2")
+linear_limit_x/softness = 16.0
+linear_limit_x/restitution = 16.0
+linear_limit_x/damping = 0.01
+angular_limit_x/enabled = false
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 20.0
+angular_spring_x/damping = 0.2
+linear_limit_y/upper_distance = 1.0
+linear_limit_y/lower_distance = -0.1
+linear_spring_y/enabled = true
+linear_spring_y/stiffness = 200.0
+linear_spring_y/damping = 1.0
+linear_spring_y/equilibrium_point = -0.2
+angular_limit_y/softness = 16.0
+angular_limit_y/restitution = 16.0
+angular_limit_y/damping = 0.01
+linear_limit_z/softness = 16.0
+linear_limit_z/restitution = 16.0
+linear_limit_z/damping = 0.01
+angular_limit_z/enabled = false
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 20.0
+angular_spring_z/damping = 0.2
+precision = 10

@@ -1,0 +1,187 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scripts_gd/hand.gd" type="Script" id=1]
+[ext_resource path="res://scenes/HandRay.gd" type="Script" id=2]
+[ext_resource path="res://materials/handrayblue.tres" type="Material" id=3]
+[ext_resource path="res://scripts_gd/player.gd" type="Script" id=4]
+[ext_resource path="res://materials/handrayred.tres" type="Material" id=5]
+[ext_resource path="res://uimeshtest/RayCast.gd" type="Script" id=6]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.1
+height = 0.6
+
+[sub_resource type="BoxShape" id=2]
+margin = 0.001
+extents = Vector3( 0.03, 0.03, 0.03 )
+
+[sub_resource type="SpatialMaterial" id=3]
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 3 )
+size = Vector3( 0.06, 0.06, 0.06 )
+
+[sub_resource type="BoxShape" id=5]
+margin = 0.001
+extents = Vector3( 0.025, 0.025, 0.025 )
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 0.01, 5, 0.01 )
+
+[sub_resource type="CubeMesh" id=7]
+flip_faces = true
+size = Vector3( 0.01, 5, 0.01 )
+
+[node name="rigidplayer" type="KinematicBody" groups=[
+"mainbody",
+]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 4 )
+
+[node name="playerbody" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.5, 0 )
+shape = SubResource( 1 )
+
+[node name="player" type="ARVROrigin" parent="."]
+
+[node name="ARVRCamera" type="ARVRCamera" parent="player"]
+current = true
+near = 0.01
+far = 8192.0
+
+[node name="rightHand" type="ARVRController" parent="player"]
+controller_id = 2
+script = ExtResource( 1 )
+
+[node name="HandArea" type="Area" parent="player/rightHand"]
+input_ray_pickable = false
+gravity_vec = Vector3( 0, 0, 0 )
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="player/rightHand/HandArea"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="player/rightHand/HandArea/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="HandGrab" type="Generic6DOFJoint" parent="player/rightHand"]
+nodes/node_a = NodePath("../HandBody")
+precision = 50
+
+[node name="HandBody" type="RigidBody" parent="player/rightHand"]
+collision_layer = 4
+collision_mask = 4
+mode = 3
+custom_integrator = true
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="handcollider" type="CollisionShape" parent="player/rightHand/HandBody"]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="HandRay" type="RayCast" parent="player/rightHand/HandBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+visible = false
+cast_to = Vector3( 0, 10, 0 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="player/rightHand/HandBody/HandRay"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+cast_shadow = 0
+mesh = SubResource( 6 )
+material/0 = ExtResource( 5 )
+
+[node name="UiRay" type="RayCast" parent="player/rightHand/HandBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+visible = false
+cast_to = Vector3( 0, 5, 0 )
+collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="player/rightHand/HandBody/UiRay"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+cast_shadow = 0
+mesh = SubResource( 7 )
+material/0 = ExtResource( 3 )
+
+[node name="leftHand" type="ARVRController" parent="player"]
+script = ExtResource( 1 )
+
+[node name="HandArea" type="Area" parent="player/leftHand"]
+input_ray_pickable = false
+gravity_vec = Vector3( 0, 0, 0 )
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="player/leftHand/HandArea"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="player/leftHand/HandArea/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="HandGrab" type="Generic6DOFJoint" parent="player/leftHand"]
+nodes/node_a = NodePath("../HandBody")
+
+[node name="HandBody" type="RigidBody" parent="player/leftHand"]
+collision_layer = 4
+collision_mask = 4
+mode = 3
+custom_integrator = true
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="handcollider" type="CollisionShape" parent="player/leftHand/HandBody"]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="HandRay" type="RayCast" parent="player/leftHand/HandBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+visible = false
+cast_to = Vector3( 0, 10, 0 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="player/leftHand/HandBody/HandRay"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+cast_shadow = 0
+mesh = SubResource( 6 )
+material/0 = ExtResource( 5 )
+
+[node name="UiRay" type="RayCast" parent="player/leftHand/HandBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+visible = false
+cast_to = Vector3( 0, 5, 0 )
+collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="player/leftHand/HandBody/UiRay"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+cast_shadow = 0
+mesh = SubResource( 7 )
+material/0 = ExtResource( 3 )
+
+[node name="groundcheck" type="RayCast" parent="."]
+[connection signal="button_pressed" from="player/rightHand" to="player/rightHand" method="_on_Hand_button_pressed"]
+[connection signal="button_release" from="player/rightHand" to="player/rightHand" method="_on_Hand_button_release"]
+[connection signal="area_shape_entered" from="player/rightHand/HandArea" to="player/rightHand" method="_on_HandArea_area_shape_entered"]
+[connection signal="area_shape_exited" from="player/rightHand/HandArea" to="player/rightHand" method="_on_HandArea_area_shape_exited"]
+[connection signal="body_entered" from="player/rightHand/HandArea" to="player/rightHand" method="_on_HandArea_body_entered"]
+[connection signal="body_exited" from="player/rightHand/HandArea" to="player/rightHand" method="_on_HandArea_body_exited"]
+[connection signal="button_pressed" from="player/leftHand" to="player/leftHand" method="_on_Hand_button_pressed"]
+[connection signal="button_release" from="player/leftHand" to="player/leftHand" method="_on_Hand_button_release"]
+[connection signal="area_shape_entered" from="player/leftHand/HandArea" to="player/leftHand" method="_on_HandArea_area_shape_entered"]
+[connection signal="area_shape_exited" from="player/leftHand/HandArea" to="player/leftHand" method="_on_HandArea_area_shape_exited"]
+[connection signal="body_entered" from="player/leftHand/HandArea" to="player/leftHand" method="_on_HandArea_body_entered"]
+[connection signal="body_exited" from="player/leftHand/HandArea" to="player/leftHand" method="_on_HandArea_body_exited"]

@@ -1,0 +1,121 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://new_shadermaterial.tres" type="Material" id=1]
+[ext_resource path="res://scripts_gd/spawnBox.gd" type="Script" id=2]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts_gd/initVr.gd" type="Script" id=5]
+[ext_resource path="res://scenes/woodLookingShader.tres" type="Material" id=6]
+[ext_resource path="res://weapons/multitool/tool.tscn" type="PackedScene" id=8]
+
+[sub_resource type="BoxShape" id=1]
+margin = 0.001
+extents = Vector3( 0.05, 0.05, 0.05 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.1, 0.1, 0.1 )
+
+[sub_resource type="BoxShape" id=3]
+margin = 0.001
+extents = Vector3( 10, 1, 10 )
+
+[sub_resource type="CubeMesh" id=4]
+material = ExtResource( 6 )
+size = Vector3( 200, 1, 200 )
+
+[sub_resource type="ConvexPolygonShape" id=5]
+points = PoolVector3Array( -0.05, 0.05, 0.05, 0.05, 0.05, -0.05, 0.05, 0.05, 0.05, -0.05, 0.05, -0.05, -0.05, -0.05, 0.05, 0.05, -0.05, -0.05, 0.05, -0.05, 0.05, -0.05, -0.05, -0.05, 0.05, 0.05, 0.05, -0.05, 0.05, -0.05, 0.05, 0.05, -0.05, -0.05, 0.05, 0.05, 0.05, -0.05, 0.05, -0.05, -0.05, -0.05, 0.05, -0.05, -0.05, -0.05, -0.05, 0.05, 0.05, 0.05, 0.05, -0.05, -0.05, 0.05, -0.05, 0.05, 0.05, 0.05, -0.05, 0.05, 0.05, 0.05, -0.05, -0.05, -0.05, -0.05, -0.05, 0.05, -0.05, 0.05, -0.05, -0.05 )
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 0.1, 0.1, 0.1 )
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+
+[node name="vrMain" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="spawnBox" type="Area" parent="." groups=[
+"spawnBox",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326886, 0.891275, -0.518795 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="spawnBox"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="spawnBox/CollisionShape"]
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )
+
+[node name="RigidBody6" type="RigidBody" parent="."]
+mode = 3
+mass = 65535.0
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.992784, 0 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="RigidBody6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.42096, 0 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="RigidBody6"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.00722, -10 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="RigidBody6"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.00722, 10 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="RigidBody6"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10, 9.00722, 0 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="RigidBody6"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -10, 9.00722, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501699, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.84372, 4.44265, 5.74141 )
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.1
+omni_range = 20.1983
+
+[node name="tool" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.488026, 0.417332, 0 )
+visible = false
+gravity_scale = 0.0
+
+[node name="player" parent="." instance=ExtResource( 4 )]
+
+[node name="RigidBody" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 1.27194, -1.50597 )
+gravity_scale = 0.0
+
+[node name="Area" type="Area" parent="RigidBody" groups=[
+"edit",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody/Area"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody/Area"]
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 5 )
+[connection signal="body_entered" from="spawnBox" to="spawnBox" method="_on_spawnBox_body_entered"]
+[connection signal="body_exited" from="spawnBox" to="spawnBox" method="_on_spawnBox_body_exited"]

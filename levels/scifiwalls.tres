@@ -1,0 +1,21 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 7
+octaves = 1
+period = 3.0
+persistence = 0.0
+lacunarity = 0.1
+
+[sub_resource type="NoiseTexture" id=2]
+flags = 35
+width = 3
+height = 2
+noise = SubResource( 1 )
+
+[resource]
+params_diffuse_mode = 4
+params_specular_mode = 3
+albedo_texture = SubResource( 2 )
+uv1_scale = Vector3( 10, 1, 10 )
+uv1_triplanar = true

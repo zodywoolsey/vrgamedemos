@@ -1,0 +1,204 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://netcode/nettestgui.gd" type="Script" id=1]
+
+[node name="gui" type="Control"]
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.392157, 0.392157, 0.392157, 1 )
+
+[node name="ip" type="Label" parent="."]
+margin_right = 512.0
+margin_bottom = 60.0
+text = "Current IP address for local hosting: 
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logtitle" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 112.0
+margin_right = 66.0
+margin_bottom = 126.0
+text = "Log:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="log" type="Label" parent="."]
+anchor_bottom = 1.0
+margin_top = 128.0
+margin_right = 512.0
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="join" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 448.0
+margin_top = 64.0
+margin_right = 511.0
+margin_bottom = 128.0
+text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="host" type="Button" parent="."]
+margin_left = 512.0
+margin_right = 576.0
+margin_bottom = 64.0
+text = "Host"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inip" type="TextEdit" parent="."]
+margin_left = 640.0
+margin_top = 64.0
+margin_right = 960.0
+margin_bottom = 128.0
+
+[node name="iniplabel" type="Label" parent="."]
+margin_left = 640.0
+margin_right = 944.0
+margin_bottom = 64.0
+text = "Enter IP for local server:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Button" parent="."]
+margin_left = 640.0
+margin_top = 128.0
+margin_right = 704.0
+margin_bottom = 192.0
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="Button" parent="."]
+margin_left = 704.0
+margin_top = 128.0
+margin_right = 768.0
+margin_bottom = 192.0
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="Button" parent="."]
+margin_left = 768.0
+margin_top = 128.0
+margin_right = 832.0
+margin_bottom = 192.0
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="4" type="Button" parent="."]
+margin_left = 640.0
+margin_top = 192.0
+margin_right = 704.0
+margin_bottom = 256.0
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="5" type="Button" parent="."]
+margin_left = 704.0
+margin_top = 192.0
+margin_right = 768.0
+margin_bottom = 256.0
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="6" type="Button" parent="."]
+margin_left = 768.0
+margin_top = 192.0
+margin_right = 832.0
+margin_bottom = 256.0
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="7" type="Button" parent="."]
+margin_left = 640.0
+margin_top = 256.0
+margin_right = 704.0
+margin_bottom = 320.0
+text = "7"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="8" type="Button" parent="."]
+margin_left = 704.0
+margin_top = 257.0
+margin_right = 768.0
+margin_bottom = 321.0
+text = "8"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="9" type="Button" parent="."]
+margin_left = 768.0
+margin_top = 256.0
+margin_right = 832.0
+margin_bottom = 320.0
+text = "9"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backspace" type="Button" parent="."]
+margin_left = 832.0
+margin_top = 128.0
+margin_right = 896.0
+margin_bottom = 192.0
+text = "back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dot" type="Button" parent="."]
+margin_left = 768.0
+margin_top = 320.0
+margin_right = 832.0
+margin_bottom = 384.0
+text = "."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="Button" parent="."]
+margin_left = 704.0
+margin_top = 320.0
+margin_right = 768.0
+margin_bottom = 384.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}

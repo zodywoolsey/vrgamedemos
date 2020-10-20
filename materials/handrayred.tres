@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+
+render_mode unshaded;
+
+void fragment(){
+	
+	vec2 uv = (FRAGCOORD.xy/VIEWPORT_SIZE).xy;
+	
+	float calced = sin(uv.x*1000.0);
+	ALBEDO = vec3( 1.0, tan((sin(uv.x)-cos(uv.y+(TIME*10.0))*TIME)*1000.0), 0.4  );
+	//ALPHA = (EMISSION.r+EMISSION.g+EMISSION.b)/3.0;
+	//ALBEDO = vec3(0,0,0);
+}"
+
+[resource]
+shader = SubResource( 1 )

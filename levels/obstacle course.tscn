@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://levels/NavMeshCollisionParser.gd" type="Script" id=1]
+
+[sub_resource type="NavigationMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 20, 0.1, 20 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 1, 0.568627, 0.568627, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+material = SubResource( 4 )
+size = Vector3( 2, 5, 0.1 )
+
+[node name="Navigation" type="Navigation"]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+navmesh = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 2 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="NavigationMeshInstance" groups=[
+"RigidMapMesh",
+]]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 5, -0.5 )
+mesh = SubResource( 3 )
+material/0 = null
