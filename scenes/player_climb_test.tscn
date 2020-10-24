@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts_gd/player.gd" type="Script" id=4]
 [ext_resource path="res://materials/handrayred.tres" type="Material" id=5]
 [ext_resource path="res://uimeshtest/RayCast.gd" type="Script" id=6]
+[ext_resource path="res://audio/fx/snow_step_retro.wav" type="AudioStream" id=7]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.1
@@ -32,13 +33,11 @@ size = Vector3( 0.01, 10, 0.01 )
 flip_faces = true
 size = Vector3( 0.01, 5, 0.01 )
 
-[sub_resource type="BoxShape" id=8]
-extents = Vector3( 0, 0, 0 )
-
-[node name="playerroot" type="Node"]
+[node name="playerroot" type="Spatial"]
 
 [node name="rigidplayer" type="KinematicBody" parent="." groups=[
 "mainbody",
+"playerbody",
 ]]
 collision_layer = 2
 collision_mask = 2
@@ -53,8 +52,6 @@ shape = SubResource( 1 )
 [node name="ARVRCamera" type="ARVRCamera" parent="rigidplayer/player"]
 current = true
 fov = 80.0
-near = 0.01
-far = 15.0
 
 [node name="rightHand" type="ARVRController" parent="rigidplayer/player"]
 controller_id = 2
@@ -73,12 +70,12 @@ material/0 = null
 
 [node name="HandGrab" type="Generic6DOFJoint" parent="rigidplayer/player/rightHand"]
 nodes/node_a = NodePath("../HandBody")
-precision = 25
 
 [node name="HandBody" type="RigidBody" parent="rigidplayer/player/rightHand"]
 collision_layer = 4
 collision_mask = 4
 mode = 3
+mass = 15.0
 custom_integrator = true
 continuous_cd = true
 contact_monitor = true
@@ -130,12 +127,12 @@ material/0 = null
 
 [node name="HandGrab" type="Generic6DOFJoint" parent="rigidplayer/player/leftHand"]
 nodes/node_a = NodePath("../HandBody")
-precision = 25
 
 [node name="HandBody" type="RigidBody" parent="rigidplayer/player/leftHand"]
 collision_layer = 4
 collision_mask = 4
 mode = 3
+mass = 15.0
 custom_integrator = true
 continuous_cd = true
 contact_monitor = true
@@ -173,17 +170,10 @@ material/0 = ExtResource( 3 )
 
 [node name="groundcheck" type="RayCast" parent="rigidplayer"]
 
-[node name="climbjoint_l" type="Generic6DOFJoint" parent="."]
-nodes/node_a = NodePath("../climbbody")
-
-[node name="climbjoint_r" type="Generic6DOFJoint" parent="."]
-nodes/node_a = NodePath("../climbbody")
-
-[node name="climbbody" type="StaticBody" parent="."]
-
-[node name="CollisionShape" type="CollisionShape" parent="climbbody"]
-shape = SubResource( 8 )
-disabled = true
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="rigidplayer"]
+stream = ExtResource( 7 )
+volume_db = -7.0
+bus = "playersteps"
 [connection signal="button_pressed" from="rigidplayer/player/rightHand" to="rigidplayer/player/rightHand" method="_on_Hand_button_pressed"]
 [connection signal="button_release" from="rigidplayer/player/rightHand" to="rigidplayer/player/rightHand" method="_on_Hand_button_release"]
 [connection signal="area_shape_entered" from="rigidplayer/player/rightHand/HandArea" to="rigidplayer/player/rightHand" method="_on_HandArea_area_shape_entered"]

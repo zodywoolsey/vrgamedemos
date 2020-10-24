@@ -25,9 +25,9 @@ func _ready():
 		tmpbody.set_collision_mask_bit(1,true)
 
 		# tmpbody.add_child(AudioStreamPlayer3D.new())
-		i.mesh.subdivide_depth = i.mesh.size.z*0
-		i.mesh.subdivide_height = i.mesh.size.y*0
-		i.mesh.subdivide_width = i.mesh.size.x*0
+		i.mesh.subdivide_depth = i.mesh.size.z*2
+		i.mesh.subdivide_height = i.mesh.size.y*2
+		i.mesh.subdivide_width = i.mesh.size.x*2
 		i.add_child(tmpbody)
 		# tmpbody.connect("body_entered",self,"collisionsound")
 

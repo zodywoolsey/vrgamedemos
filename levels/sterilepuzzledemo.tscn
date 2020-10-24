@@ -28,7 +28,7 @@ size = Vector3( 6, 6, 0.1 )
 [sub_resource type="CubeMesh" id=8]
 size = Vector3( 0.1, 0.3, 2 )
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=9]
 albedo_color = Color( 0, 0, 0, 1 )
 emission_enabled = true
 emission = Color( 1, 0, 0, 1 )
@@ -36,8 +36,8 @@ emission_energy = 1.0
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="CubeMesh" id=13]
-material = SubResource( 14 )
+[sub_resource type="CubeMesh" id=10]
+material = SubResource( 9 )
 size = Vector3( 0.1, 4, 2 )
 
 [sub_resource type="CubeMesh" id=11]
@@ -46,13 +46,13 @@ size = Vector3( 3, 0.1, 6 )
 [sub_resource type="CubeMesh" id=12]
 size = Vector3( 2, 0.1, 2 )
 
-[sub_resource type="SphereMesh" id=9]
+[sub_resource type="SphereMesh" id=13]
 radius = 0.2
 height = 0.4
 radial_segments = 16
 rings = 8
 
-[sub_resource type="SphereShape" id=10]
+[sub_resource type="SphereShape" id=14]
 margin = 0.001
 radius = 0.2
 
@@ -182,28 +182,28 @@ material/0 = null
 "RigidMapMesh",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1.96969, 0 )
-mesh = SubResource( 13 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="MeshInstance21" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
 "RigidMapMesh",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1.96969, 0 )
-mesh = SubResource( 13 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="MeshInstance22" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
 "RigidMapMesh",
 ]]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, -1.96969, -1 )
-mesh = SubResource( 13 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="MeshInstance23" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
 "RigidMapMesh",
 ]]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, -1.96969, 1 )
-mesh = SubResource( 13 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="MeshInstance16" type="MeshInstance" parent="Navigation/NavigationMeshInstance" groups=[
@@ -250,11 +250,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody2"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody2"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody4" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -265,11 +265,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody4"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody4"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody6" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -280,11 +280,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody6"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody6"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody8" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -295,11 +295,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody8"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody8"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody10" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -310,11 +310,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody10"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody10"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody12" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -325,11 +325,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody12"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody12"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody14" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -340,11 +340,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody14"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody14"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody16" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -355,11 +355,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody16"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody16"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody18" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -370,11 +370,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody18"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody18"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody20" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -385,11 +385,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody20"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody20"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody22" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -400,11 +400,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody22"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody22"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody24" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -415,11 +415,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody24"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody24"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="RigidBody26" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -430,11 +430,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody26"]
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody26"]
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="Area" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -3.12585, 0 )

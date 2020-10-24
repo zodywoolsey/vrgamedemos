@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 0.1, 0.5, 0.1 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+margin = 0.001
+points = PoolVector3Array( -0.05, 0.25, 0.05, 0.05, 0.25, -0.05, 0.05, 0.25, 0.05, -0.05, 0.25, -0.05, -0.05, -0.25, 0.05, 0.05, -0.25, -0.05, 0.05, -0.25, 0.05, -0.05, -0.25, -0.05, 0.05, 0.25, 0.05, -0.05, 0.25, -0.05, 0.05, 0.25, -0.05, -0.05, 0.25, 0.05, 0.05, -0.25, 0.05, -0.05, -0.25, -0.05, 0.05, -0.25, -0.05, -0.05, -0.25, 0.05, 0.05, 0.25, 0.05, -0.05, -0.25, 0.05, -0.05, 0.25, 0.05, 0.05, -0.25, 0.05, 0.05, 0.25, -0.05, -0.05, -0.25, -0.05, -0.05, 0.25, -0.05, 0.05, -0.25, -0.05 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+margin = 0.001
+points = PoolVector3Array( -0.05, 0.25, 0.05, 0.05, 0.25, -0.05, 0.05, 0.25, 0.05, -0.05, 0.25, -0.05, -0.05, -0.25, 0.05, 0.05, -0.25, -0.05, 0.05, -0.25, 0.05, -0.05, -0.25, -0.05, 0.05, 0.25, 0.05, -0.05, 0.25, -0.05, 0.05, 0.25, -0.05, -0.05, 0.25, 0.05, 0.05, -0.25, 0.05, -0.05, -0.25, -0.05, 0.05, -0.25, -0.05, -0.05, -0.25, 0.05, 0.05, 0.25, 0.05, -0.05, -0.25, 0.05, -0.05, 0.25, 0.05, 0.05, -0.25, 0.05, 0.05, 0.25, -0.05, -0.05, -0.25, -0.05, -0.05, 0.25, -0.05, 0.05, -0.25, -0.05 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.1, 0.1, 0.4 )
+
+[sub_resource type="ConvexPolygonShape" id=5]
+margin = 0.05
+points = PoolVector3Array( -0.05, 0.05, 0.2, 0.05, 0.05, -0.2, 0.05, 0.05, 0.2, -0.05, 0.05, -0.2, -0.05, -0.05, 0.2, 0.05, -0.05, -0.2, 0.05, -0.05, 0.2, -0.05, -0.05, -0.2, 0.05, 0.05, 0.2, -0.05, 0.05, -0.2, 0.05, 0.05, -0.2, -0.05, 0.05, 0.2, 0.05, -0.05, 0.2, -0.05, -0.05, -0.2, 0.05, -0.05, -0.2, -0.05, -0.05, 0.2, 0.05, 0.05, 0.2, -0.05, -0.05, 0.2, -0.05, 0.05, 0.2, 0.05, -0.05, 0.2, 0.05, 0.05, -0.2, -0.05, -0.05, -0.2, -0.05, 0.05, -0.2, 0.05, -0.05, -0.2 )
+
+[node name="leg" type="Spatial"]
+
+[node name="upperleg" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+continuous_cd = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="upperleg"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="upperleg"]
+shape = SubResource( 2 )
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="upperleg"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../lowerleg")
+angular_limit_x/upper_angle = 5.0
+angular_limit_x/lower_angle = -110.0
+angular_spring_x/stiffness = 40.0
+angular_spring_x/damping = 1.0
+angular_limit_y/upper_angle = 10.0
+angular_limit_y/lower_angle = -10.0
+angular_spring_z/stiffness = 40.0
+angular_spring_z/damping = 1.0
+
+[node name="lowerleg" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
+continuous_cd = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="lowerleg"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="lowerleg"]
+shape = SubResource( 3 )
+
+[node name="Generic6DOFJoint2" type="Generic6DOFJoint" parent="lowerleg"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../foot")
+angular_limit_x/upper_angle = 15.0
+angular_limit_x/lower_angle = -60.0
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 40.0
+angular_spring_x/damping = 1.0
+angular_limit_y/upper_angle = 30.0
+angular_limit_y/lower_angle = -30.0
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 40.0
+angular_spring_z/damping = 1.0
+
+[node name="foot" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+continuous_cd = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="foot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="foot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1 )
+shape = SubResource( 5 )

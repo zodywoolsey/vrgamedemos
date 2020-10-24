@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\zodyw\\Documents\\GitHub\\impostersvr\\android\\build\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\zodyw\\Documents\\GitHub\\vrgamedemos\\android\\build\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\zodyw\\.gradle\\caches\\transforms-2\\files-2.1\\366555e0658123cedccaf0883b3651bc\\coordinatorlayout-1.0.0\\res\\values\\values.xml",

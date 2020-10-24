@@ -197,7 +197,7 @@ func grab():
 
 func pull():
 	applyGrabShader()
-	if handRay.is_colliding() && !rayCollidedNode && handRay.get_collider().get_class() == "RigidBody" && handRay.get_collider().is_in_group('grabbable'):
+	if handRay.is_colliding() && !rayCollidedNode && handRay.get_collider().get_class() == "RigidBody" && handRay.get_collider().is_in_group('pullable'):
 		rayCollidedNode = get_node(handRay.get_collider().get_path())
 		rayCollidedNodeMesh = rayCollidedNode.find_node('MeshInstance',true,true)
 		pullInterval = 0

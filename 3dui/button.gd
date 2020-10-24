@@ -19,7 +19,7 @@ func btnpressed():
 	if counter < 5:
 		var box = RigidBody.new()
 		box.continuous_cd = true
-		# box.mass = 5
+		box.mass = 10
 		var mesh = MeshInstance.new()
 		mesh.mesh = CubeMesh.new()
 		mesh.mesh.size = Vector3(.1,.1,.1)
@@ -29,6 +29,7 @@ func btnpressed():
 		tmpcolsh.shape.margin = 0.0
 		box.add_child(tmpcolsh)
 		box.add_to_group('grabbable')
+		box.add_to_group('pullable')
 		get_tree().root.get_node('Node/startup').add_child(box)
 		box.global_transform.origin = Vector3(global_transform.origin.x, global_transform.origin.y+.5, global_transform.origin.z-1)
 		# var tmplight = lightstick.instance()

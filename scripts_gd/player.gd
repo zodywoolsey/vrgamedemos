@@ -29,10 +29,14 @@ var fullcontact = false
 var rotateflag = true
 
 var jumpbuttonpressed = false
+var walking = false
 
 var rloc
 var lloc
 var hloc
+
+onready var playeraudio = get_node("AudioStreamPlayer")
+var stepplaying = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,6 +53,7 @@ func _process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	walking = false
 	rx = right.get_joystick_axis(0)
 	ry = right.get_joystick_axis(1)
 	lx =  left.get_joystick_axis(0)
@@ -87,12 +92,16 @@ func _physics_process(delta):
 	leftstickvector = leftstickvector.normalized() * ((leftstickvector.length() - deadzone) / (1 - deadzone))
 	if leftstickvector.y > 0:
 		direction -= cam.global_transform.basis.z
+		walking = true
 	elif leftstickvector.y < 0:
 		direction += cam.global_transform.basis.z
+		walking = true
 	if leftstickvector.x > 0:
 		direction += cam.global_transform.basis.x
+		walking = true
 	elif leftstickvector.x < 0:
 		direction -= cam.global_transform.basis.x
+		walking = true
 		
 	if rotateflag == true:
 		if rightstickvector.y > 0:
@@ -129,8 +138,15 @@ func _physics_process(delta):
 	playerbody.global_transform.origin.x = cam.global_transform.origin.x
 	playerbody.global_transform.origin.z = cam.global_transform.origin.z
 	
-	playerbody.shape.height = cam.transform.origin.y
+	playerbody.shape.height = cam.transform.origin.y/2
 	
-	climbjointl.global_transform.origin = left.global_transform.origin
-	climbjointr.global_transform.origin = right.global_transform.origin
+	if walking && !right.climbing && !left.climbing && !playeraudio.playing:
+		playeraudio.play()
+		stepplaying = true
+	elif !walking && !playeraudio.playing:
+		playeraudio.stop()
+		stepplaying = false
+	
+	# climbjointl.global_transform.origin = left.global_transform.origin
+	# climbjointr.global_transform.origin = right.global_transform.origin
 

@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 0.1, 0.1, 0.5 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+margin = 0.001
+points = PoolVector3Array( -0.05, 0.05, 0.25, 0.05, 0.05, -0.25, 0.05, 0.05, 0.25, -0.05, 0.05, -0.25, -0.05, -0.05, 0.25, 0.05, -0.05, -0.25, 0.05, -0.05, 0.25, -0.05, -0.05, -0.25, 0.05, 0.05, 0.25, -0.05, 0.05, -0.25, 0.05, 0.05, -0.25, -0.05, 0.05, 0.25, 0.05, -0.05, 0.25, -0.05, -0.05, -0.25, 0.05, -0.05, -0.25, -0.05, -0.05, 0.25, 0.05, 0.05, 0.25, -0.05, -0.05, 0.25, -0.05, 0.05, 0.25, 0.05, -0.05, 0.25, 0.05, 0.05, -0.25, -0.05, -0.05, -0.25, -0.05, 0.05, -0.25, 0.05, -0.05, -0.25 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.1, 0.1, 0.5 )
+
+[sub_resource type="ConvexPolygonShape" id=4]
+margin = 0.001
+points = PoolVector3Array( -0.05, 0.05, 0.25, 0.05, 0.05, -0.25, 0.05, 0.05, 0.25, -0.05, 0.05, -0.25, -0.05, -0.05, 0.25, 0.05, -0.05, -0.25, 0.05, -0.05, 0.25, -0.05, -0.05, -0.25, 0.05, 0.05, 0.25, -0.05, 0.05, -0.25, 0.05, 0.05, -0.25, -0.05, 0.05, 0.25, 0.05, -0.05, 0.25, -0.05, -0.05, -0.25, 0.05, -0.05, -0.25, -0.05, -0.05, 0.25, 0.05, 0.05, 0.25, -0.05, -0.05, 0.25, -0.05, 0.05, 0.25, 0.05, -0.05, 0.25, 0.05, 0.05, -0.25, -0.05, -0.05, -0.25, -0.05, 0.05, -0.25, 0.05, -0.05, -0.25 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 0.1, 0.1, 0.1 )
+
+[sub_resource type="ConvexPolygonShape" id=6]
+margin = 0.001
+points = PoolVector3Array( -0.05, 0.05, 0.05, 0.05, 0.05, -0.05, 0.05, 0.05, 0.05, -0.05, 0.05, -0.05, -0.05, -0.05, 0.05, 0.05, -0.05, -0.05, 0.05, -0.05, 0.05, -0.05, -0.05, -0.05, 0.05, 0.05, 0.05, -0.05, 0.05, -0.05, 0.05, 0.05, -0.05, -0.05, 0.05, 0.05, 0.05, -0.05, 0.05, -0.05, -0.05, -0.05, 0.05, -0.05, -0.05, -0.05, -0.05, 0.05, 0.05, 0.05, 0.05, -0.05, -0.05, 0.05, -0.05, 0.05, 0.05, 0.05, -0.05, 0.05, 0.05, 0.05, -0.05, -0.05, -0.05, -0.05, -0.05, 0.05, -0.05, 0.05, -0.05, -0.05 )
+
+[node name="arm" type="Spatial"]
+
+[node name="upperarm" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+collision_mask = 2147483649
+continuous_cd = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="upperarm"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="upperarm"]
+shape = SubResource( 2 )
+
+[node name="forearm" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6 )
+collision_mask = 2147483649
+continuous_cd = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="forearm"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="forearm"]
+shape = SubResource( 4 )
+
+[node name="hand" type="RigidBody" parent="." groups=[
+"grabbable",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+collision_mask = 2147483649
+continuous_cd = true
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="hand"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="hand"]
+shape = SubResource( 6 )
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3 )
+nodes/node_a = NodePath("../upperarm")
+nodes/node_b = NodePath("../forearm")
+linear_spring_x/stiffness = 1.0
+linear_spring_x/equilibrium_point = 5.0
+angular_limit_x/upper_angle = 150.0
+angular_limit_x/lower_angle = -5.0
+angular_limit_x/erp = 50.0
+angular_spring_x/stiffness = 50.0
+angular_spring_x/damping = 1.0
+angular_spring_x/equilibrium_point = 1.57
+angular_spring_z/stiffness = 15.0
+
+[node name="Generic6DOFJoint2" type="Generic6DOFJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.9 )
+nodes/node_a = NodePath("../forearm")
+nodes/node_b = NodePath("../hand")
+angular_limit_x/upper_angle = 95.0
+angular_limit_x/lower_angle = -15.0
+angular_limit_z/upper_angle = 180.0

@@ -17,7 +17,7 @@ size = Vector3( 0.1, 0.1, 0.1 )
 flags_unshaded = true
 albedo_color = Color( 1, 0.392157, 0.392157, 1 )
 
-[sub_resource type="ArrayMesh" id=7]
+[sub_resource type="ArrayMesh" id=5]
 surfaces/0 = {
 "aabb": AABB( -0.0557735, -0.0557735, -0.0557735, 0.111547, 0.111557, 0.111557 ),
 "array_data": PoolByteArray( 194, 114, 100, 189, 194, 114, 100, 61, 194, 114, 100, 61, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 0, 194, 114, 100, 61, 194, 114, 100, 61, 194, 114, 100, 189, 0, 0, 129, 0, 129, 0, 0, 127, 85, 57, 0, 0, 194, 114, 100, 61, 194, 114, 100, 61, 194, 114, 100, 61, 0, 0, 127, 0, 127, 0, 0, 127, 85, 53, 0, 0, 194, 114, 100, 189, 194, 114, 100, 61, 194, 114, 100, 189, 0, 0, 129, 0, 129, 0, 0, 127, 0, 60, 0, 0, 194, 114, 100, 189, 194, 114, 100, 189, 194, 114, 100, 61, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 56, 194, 114, 100, 61, 194, 114, 100, 189, 194, 114, 100, 189, 0, 0, 129, 0, 129, 0, 0, 127, 85, 57, 0, 56, 194, 114, 100, 61, 194, 114, 100, 189, 194, 114, 100, 61, 0, 0, 127, 0, 127, 0, 0, 127, 85, 53, 0, 56, 194, 114, 100, 189, 194, 114, 100, 189, 194, 114, 100, 189, 0, 0, 129, 0, 129, 0, 0, 127, 0, 60, 0, 56, 194, 114, 100, 61, 194, 114, 100, 61, 194, 114, 100, 61, 127, 0, 0, 0, 0, 0, 129, 127, 85, 53, 0, 0, 194, 114, 100, 189, 194, 114, 100, 61, 194, 114, 100, 189, 129, 0, 0, 0, 0, 0, 127, 127, 0, 0, 0, 56, 194, 114, 100, 61, 194, 114, 100, 61, 194, 114, 100, 189, 127, 0, 0, 0, 0, 0, 129, 127, 85, 57, 0, 0, 194, 114, 100, 189, 194, 114, 100, 61, 194, 114, 100, 61, 129, 0, 0, 0, 0, 0, 127, 127, 85, 53, 0, 56, 194, 114, 100, 61, 194, 114, 100, 189, 194, 114, 100, 61, 127, 0, 0, 0, 0, 0, 129, 127, 85, 53, 0, 56, 194, 114, 100, 189, 194, 114, 100, 189, 194, 114, 100, 189, 129, 0, 0, 0, 0, 0, 127, 127, 0, 0, 0, 60, 194, 114, 100, 61, 194, 114, 100, 189, 194, 114, 100, 189, 127, 0, 0, 0, 0, 0, 129, 127, 85, 57, 0, 56, 194, 114, 100, 189, 194, 114, 100, 189, 194, 114, 100, 61, 129, 0, 0, 0, 0, 0, 127, 127, 85, 53, 0, 60, 194, 114, 100, 61, 194, 114, 100, 61, 194, 114, 100, 61, 0, 127, 0, 0, 129, 0, 0, 127, 85, 53, 0, 56, 194, 114, 100, 189, 194, 114, 100, 189, 194, 114, 100, 61, 0, 129, 0, 0, 127, 0, 0, 127, 85, 57, 0, 56, 194, 114, 100, 189, 194, 114, 100, 61, 194, 114, 100, 61, 0, 127, 0, 0, 129, 0, 0, 127, 85, 57, 0, 56, 194, 114, 100, 61, 194, 114, 100, 189, 194, 114, 100, 61, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 56, 194, 114, 100, 61, 194, 114, 100, 61, 194, 114, 100, 189, 0, 127, 0, 0, 129, 0, 0, 127, 85, 53, 0, 60, 194, 114, 100, 189, 194, 114, 100, 189, 194, 114, 100, 189, 0, 129, 0, 0, 127, 0, 0, 127, 85, 57, 0, 60, 194, 114, 100, 189, 194, 114, 100, 61, 194, 114, 100, 189, 0, 127, 0, 0, 129, 0, 0, 127, 85, 57, 0, 60, 194, 114, 100, 61, 194, 114, 100, 189, 194, 114, 100, 189, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60 ),
@@ -30,33 +30,33 @@ surfaces/0 = {
 "vertex_count": 24
 }
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=7]
 size = Vector3( 0.4, 0.4, 0.1 )
 
-[sub_resource type="OpenSimplexNoise" id=9]
+[sub_resource type="OpenSimplexNoise" id=8]
 octaves = 9
 period = 30.0
 lacunarity = 4.0
 
-[sub_resource type="NoiseTexture" id=10]
+[sub_resource type="NoiseTexture" id=9]
 flags = 35
 width = 64
 seamless = true
 as_normalmap = true
 bump_strength = 5.5
-noise = SubResource( 9 )
+noise = SubResource( 8 )
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=10]
 albedo_color = Color( 0.615686, 0.247059, 0, 1 )
-albedo_texture = SubResource( 10 )
+albedo_texture = SubResource( 9 )
 metallic = 0.5
-metallic_texture = SubResource( 10 )
+metallic_texture = SubResource( 9 )
 uv1_triplanar = true
 
-[sub_resource type="ConvexPolygonShape" id=6]
+[sub_resource type="ConvexPolygonShape" id=11]
 margin = 0.001
 points = PoolVector3Array( -0.2, 0.2, 0.05, 0.2, 0.2, -0.05, 0.2, 0.2, 0.05, -0.2, 0.2, -0.05, -0.2, -0.2, 0.05, 0.2, -0.2, -0.05, 0.2, -0.2, 0.05, -0.2, -0.2, -0.05, 0.2, 0.2, 0.05, -0.2, 0.2, -0.05, 0.2, 0.2, -0.05, -0.2, 0.2, 0.05, 0.2, -0.2, 0.05, -0.2, -0.2, -0.05, 0.2, -0.2, -0.05, -0.2, -0.2, 0.05, 0.2, 0.2, 0.05, -0.2, -0.2, 0.05, -0.2, 0.2, 0.05, 0.2, -0.2, 0.05, 0.2, 0.2, -0.05, -0.2, -0.2, -0.05, -0.2, 0.2, -0.05, 0.2, -0.2, -0.05 )
 
@@ -81,8 +81,8 @@ mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="button/MeshInstance"]
-mesh = SubResource( 7 )
-material/0 = SubResource( 8 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="buttonshell" type="RigidBody" parent="."]
 collision_layer = 0
@@ -93,11 +93,11 @@ contact_monitor = true
 can_sleep = false
 
 [node name="MeshInstance" type="MeshInstance" parent="buttonshell"]
-mesh = SubResource( 5 )
-material/0 = SubResource( 11 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="buttonshell"]
-shape = SubResource( 6 )
+shape = SubResource( 11 )
 
 [node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="."]
 nodes/node_a = NodePath("../button")

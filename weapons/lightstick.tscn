@@ -17,6 +17,7 @@ points = PoolVector3Array( -0.025, 0.025, 0.025, 0.025, 0.025, -0.025, 0.025, 0.
 
 [node name="lightstick" type="RigidBody" groups=[
 "grabbable",
+"pullable",
 ]]
 continuous_cd = true
 

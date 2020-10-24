@@ -234,7 +234,7 @@ func climb():
 		
 func pull():
 	applyGrabShader()
-	if handRay.is_colliding() && !rayCollidedNode && handRay.get_collider().get_class() == "RigidBody" && handRay.get_collider().is_in_group('grabbable'):
+	if handRay.is_colliding() && !rayCollidedNode && handRay.get_collider().get_class() == "RigidBody" && handRay.get_collider().is_in_group('pullable'):
 		rayCollidedNode = get_node(handRay.get_collider().get_path())
 		rayCollidedNodeMesh = rayCollidedNode.find_node('MeshInstance',true,true)
 		pullInterval = 0
@@ -245,7 +245,8 @@ func pull():
 		distance = sqrt( pow(handOrigin.x-rayCollidedNodeOrigin.x, 2)+pow(handOrigin.z-rayCollidedNodeOrigin.z, 2) )
 		# print(distance)
 		if distance < (pullInterval/50)+.4:
-			rayCollidedNode.global_transform = global_transform
+			rayCollidedNode.global_transform.origin = global_transform.origin
+			rayCollidedNode.rotation_degrees = rotation_degrees
 		else:
 			pullInterval += 1
 		if !rayCollidedtmp || !gravtmp || !damptmp:
@@ -282,7 +283,7 @@ func applyGrabShader():
 		rayCollidedNodeMesh.material_override = null
 		rayCollidedNodeMesh = null
 		tmpMat = null
-	if handRay.is_colliding() && !rayCollidedNode && handRay.get_collider().get_class() == "RigidBody" && handRay.get_collider().is_in_group('grabbable'):
+	if handRay.is_colliding() && !rayCollidedNode && handRay.get_collider().get_class() == "RigidBody" && handRay.get_collider().is_in_group('pullable'):
 		rayCollidedNodeMesh = get_node(handRay.get_collider().get_path()).find_node('MeshInstance',true,true)
 		if rayCollidedNodeMesh:
 			rayCollidedNodeMesh.material_override = grabShader
