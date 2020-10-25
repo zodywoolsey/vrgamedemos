@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var player = get_node('../playerroot/rigidplayer')
+onready var player = get_node('../../playerroot/rigidplayer')
 onready var playercam = player.get_node('player/ARVRCamera')
 onready var body = get_node('torsobody')
 onready var bodycontrol = get_node('KinematicBody')

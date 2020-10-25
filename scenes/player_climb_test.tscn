@@ -51,7 +51,7 @@ shape = SubResource( 1 )
 
 [node name="ARVRCamera" type="ARVRCamera" parent="rigidplayer/player"]
 current = true
-fov = 80.0
+far = 40.0
 
 [node name="rightHand" type="ARVRController" parent="rigidplayer/player"]
 controller_id = 2

@@ -31,25 +31,24 @@ transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1
 [node name="obstaclecoursebutton" parent="startup/menu" instance=ExtResource( 6 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.2, -0.9, -0.8 )
 
-[node name="snow" parent="startup" instance=ExtResource( 5 )]
+[node name="snow" parent="startup/menu" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 10 )
 
-[node name="ghost" parent="startup" instance=ExtResource( 7 )]
-transform = Transform( -2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -2, 1, 0 )
+[node name="ghost" parent="startup/menu" instance=ExtResource( 7 )]
+transform = Transform( -2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -2, 0, 10 )
 script = ExtResource( 8 )
 
-[node name="guy" parent="startup" instance=ExtResource( 4 )]
-transform = Transform( 0.433013, -0.25, 0, 0.25, 0.433013, 0, 0, 0, 0.5, 4, 1.19328, 0 )
+[node name="guy" parent="startup/menu" instance=ExtResource( 4 )]
+transform = Transform( -2.18557e-08, -6.5135e-15, -0.5, -1.49012e-07, 0.5, 0, 0.5, 1.49012e-07, -2.18557e-08, 4, 0.19328, 10 )
 script = ExtResource( 12 )
 
-[node name="tool" parent="startup" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10 )
+[node name="tool" parent="startup/menu" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
-[node name="button" parent="startup" instance=ExtResource( 6 )]
-transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 2, 2, -8 )
+[node name="button" parent="startup/menu" instance=ExtResource( 6 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 2, 1, 2 )
 script = ExtResource( 10 )
 
-[node name="button2" parent="startup" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -10 )
+[node name="button2" parent="startup/menu" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0 )
 script = ExtResource( 11 )
-
-[editable path="startup/ghost"]

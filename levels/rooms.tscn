@@ -1,12 +1,11 @@
-[gd_scene load_steps=121 format=2]
+[gd_scene load_steps=120 format=2]
 
 [ext_resource path="res://levels/NavMeshCollisionParser.gd" type="Script" id=1]
 [ext_resource path="res://levels/outofboundsarea.gd" type="Script" id=2]
 [ext_resource path="res://3dui/button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://3dui/doorbutton.gd" type="Script" id=4]
-[ext_resource path="res://levels/weightplatform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://weapons/flashlight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://punchingbox.tscn" type="PackedScene" id=7]
-[ext_resource path="res://3dui/button.gd" type="Script" id=8]
 [ext_resource path="res://weapons/multitool/tool.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationMesh" id=1]
@@ -124,9 +123,6 @@ uv1_triplanar = true
 [sub_resource type="CubeMesh" id=29]
 material = SubResource( 28 )
 size = Vector3( 8, 4, 0.1 )
-subdivide_width = 64
-subdivide_height = 32
-subdivide_depth = 1
 
 [sub_resource type="CubeMesh" id=30]
 size = Vector3( 12, 4, 0.1 )
@@ -359,15 +355,15 @@ size = Vector3( 2, 4, 0.1 )
 material = SubResource( 102 )
 size = Vector3( 6.5, 4, 0.1 )
 
-[sub_resource type="BoxShape" id=112]
+[sub_resource type="BoxShape" id=105]
 margin = 0.001
 extents = Vector3( 100, 1, 100 )
 
-[sub_resource type="ProceduralSky" id=105]
+[sub_resource type="ProceduralSky" id=106]
 
-[sub_resource type="Environment" id=106]
+[sub_resource type="Environment" id=107]
 background_mode = 1
-background_sky = SubResource( 105 )
+background_sky = SubResource( 106 )
 background_color = Color( 0.0980392, 0, 0, 1 )
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_sky_contribution = 0.0
@@ -378,7 +374,7 @@ fog_depth_begin = 0.0
 fog_depth_end = 12.0
 fog_depth_curve = 5.27792
 
-[sub_resource type="SpatialMaterial" id=107]
+[sub_resource type="SpatialMaterial" id=108]
 albedo_color = Color( 0, 0, 0, 1 )
 emission_enabled = true
 emission = Color( 0, 1, 0.882353, 1 )
@@ -386,11 +382,11 @@ emission_energy = 1.0
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="CubeMesh" id=108]
-material = SubResource( 107 )
+[sub_resource type="CubeMesh" id=109]
+material = SubResource( 108 )
 size = Vector3( 10, 0.01, 0.05 )
 
-[sub_resource type="Shader" id=109]
+[sub_resource type="Shader" id=110]
 code = "shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_toon,specular_schlick_ggx;
 uniform vec4 albedo : hint_color;
@@ -442,8 +438,8 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=110]
-shader = SubResource( 109 )
+[sub_resource type="ShaderMaterial" id=111]
+shader = SubResource( 110 )
 shader_param/albedo = Color( 0.25098, 0.25098, 0.25098, 1 )
 shader_param/specular = 0.5
 shader_param/metallic = 0.0
@@ -456,7 +452,7 @@ shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/texture_albedo = SubResource( 4 )
 
-[sub_resource type="BoxShape" id=111]
+[sub_resource type="BoxShape" id=112]
 margin = 0.001
 extents = Vector3( 100, 5, 100 )
 
@@ -1153,10 +1149,10 @@ collision_mask = 7
 
 [node name="CollisionShape" type="CollisionShape" parent="NavigationMeshInstance/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0 )
-shape = SubResource( 112 )
+shape = SubResource( 105 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 106 )
+environment = SubResource( 107 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.85, -2.04282 )
@@ -1164,7 +1160,7 @@ omni_range = 10.0
 
 [node name="flooraccentlight" type="MeshInstance" parent="."]
 transform = Transform( 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0, 1, -18.112, 0.0486176, -9.07269 )
-mesh = SubResource( 108 )
+mesh = SubResource( 109 )
 material/0 = null
 
 [node name="ceiling22" type="MeshInstance" parent="." groups=[
@@ -1172,7 +1168,7 @@ material/0 = null
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -3 )
 mesh = SubResource( 2 )
-material/0 = SubResource( 110 )
+material/0 = SubResource( 111 )
 
 [node name="ceiling21" type="MeshInstance" parent="." groups=[
 "RigidMapMesh",
@@ -1328,22 +1324,18 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.02879, 0 )
-shape = SubResource( 111 )
+shape = SubResource( 112 )
 
 [node name="button" parent="." instance=ExtResource( 3 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.9378, 1.19815, -12.4302 )
 script = ExtResource( 4 )
-
-[node name="weightplatform" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4 )
-
-[node name="button2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25013, -3 )
-script = ExtResource( 8 )
 
 [node name="punchingbag" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.99722, -2 )
 
 [node name="tool" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5127, 0.974706, -10.7333 )
+
+[node name="flashlight" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26697, 2.00412, -1.3789 )
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]

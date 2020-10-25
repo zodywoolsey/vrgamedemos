@@ -1,5 +1,7 @@
 extends Spatial
 
+
+
 var perform_runtime_config = false
 var arServ = ''
 
@@ -9,7 +11,7 @@ var interface = null
 var nums = []
 var meshes = []
 
-onready var buttons = get_node('menu')
+onready var menu = get_node('menu')
 onready var roomsbutton = get_node('menu/roomsbutton/button')
 onready var obstaclecoursebutton = get_node('menu/obstaclecoursebutton/button')
 
@@ -39,19 +41,19 @@ func _process(delta_t):
 	
 func loadrooms():
 	var tmplevel = load('res://levels/rooms.tscn')
-	get_node('snow').queue_free()
+	menu.queue_free()
 	var tmp = tmplevel.instance()
 	tmp.global_transform.origin = get_node('playerroot/rigidplayer/player/ARVRCamera').global_transform.origin
 	tmp.global_transform.origin.y = 0
 	add_child(tmp)
-	buttons.global_transform.origin.y = -100
-	buttons.visible = false
+	menu.global_transform.origin.y = -100
+	menu.visible = false
 	
 # func loadobstaclecourse():
 # 	var tmplevel = load('res://levels/obstacle course.tscn')
 # 	add_child(tmplevel.instance())
-# 	buttons.global_transform.origin.y = -100
-# 	buttons.visible = false
+# 	menu.global_transform.origin.y = -100
+# 	menu.visible = false
 
 
 
@@ -68,7 +70,7 @@ func _initialize_ovr_mobile_arvr_interface():
 		ovr_init_config = load("res://addons/godot_ovrmobile/OvrInitConfig.gdns");
 		if (ovr_init_config):
 			ovr_init_config = ovr_init_config.new()
-			ovr_init_config.set_render_target_size_multiplier(0.9) # setting to 1 here is the default
+			ovr_init_config.set_render_target_size_multiplier(1) # setting to 1 here is the default
 
 		# Configure the interface init parameters.
 		if arvr_interface.initialize():

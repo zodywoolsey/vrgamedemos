@@ -21,6 +21,7 @@ height = 0.1
 
 [node name="flashlight" type="RigidBody" groups=[
 "grabbable",
+"pullable",
 ]]
 continuous_cd = true
 can_sleep = false

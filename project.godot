@@ -22,7 +22,7 @@ config/icon="res://icon.png"
 [gdnative]
 
 singletons=[ "res://addons/godot-oculus/godot_oculus.gdnlib", "res://addons/godot_ovrmobile/godot_ovrmobile.gdnlib" ]
-singletons_disabled=[  ]
+singletons_disabled=[ "res://addons/godot-oculus/godot_oculus.gdnlib" ]
 
 [physics]
 
@@ -35,8 +35,11 @@ common/physics_jitter_fix=0.0
 quality/driver/driver_name="GLES2"
 threads/thread_model=2
 vram_compression/import_etc=true
-quality/shadow_atlas/size.mobile=512
+quality/directional_shadow/size.mobile=512
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
 quality/shading/force_vertex_shading=true
 quality/shading/force_lambert_over_burley.mobile=false
 quality/shading/force_blinn_over_ggx.mobile=false
+quality/depth/hdr=false
 environment/default_environment="res://envs/default_env.tres"
