@@ -30,6 +30,7 @@ points = PoolVector3Array( 0, 0, 0.55, 0, 0, 0.55, 0, 0, 0.55, 0, 0, 0.55, 0, 0,
 extents = Vector3( 0, 0, 0 )
 
 [node name="ghost" type="Spatial"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="torsobody" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -90,6 +91,7 @@ disabled = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.45058e-09, 0 )
 nodes/node_a = NodePath("../KinematicBody")
 nodes/node_b = NodePath("../torsobody")
+linear_limit_x/enabled = false
 linear_spring_x/stiffness = 100.0
 linear_spring_x/damping = 10.0
 angular_limit_x/enabled = false
@@ -101,6 +103,7 @@ angular_limit_y/enabled = false
 angular_spring_y/enabled = true
 angular_spring_y/stiffness = 200.0
 angular_spring_y/damping = 20.0
+linear_limit_z/enabled = false
 linear_spring_z/stiffness = 100.0
 linear_spring_z/damping = 10.0
 angular_limit_z/enabled = false

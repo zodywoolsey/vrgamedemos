@@ -9,7 +9,7 @@ func _ready():
 	var tmpbody = StaticBody.new()
 	for i in rigidmapmeshes:
 		var tmpcollisionshape = CollisionShape.new()
-		var tmpshape = i.mesh.create_trimesh_shape()
+		var tmpshape = i.mesh.create_convex_shape()
 		tmpshape.margin = 0.001
 		tmpcollisionshape.shape = tmpshape
 		tmpbody.add_child(tmpcollisionshape)

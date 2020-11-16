@@ -9,6 +9,8 @@ var grabShader = preload('res://handGrabMaterial.tres')
 var handcollider
 var otherhand
 
+onready var timer = get_node('collisionTimer')
+
 # onready var handaudio = get_node('handaudio')
 
 var grabDown = false
@@ -65,12 +67,10 @@ func _ready():
 	uiRay = handBody.get_node('UiRay')
 	handcollider = handBody.get_node('handcollider')
 	if name == "rightHand":
-		climbjoint = get_node('../../../climbjoint_r')
 		otherhand = get_node('../leftHand')
 	if name == "leftHand":
-		climbjoint = get_node('../../../climbjoint_l')
 		otherhand = get_node('../rightHand')
-	print(otherhand)
+	
 
 
 func _physics_process(delta):
@@ -100,7 +100,7 @@ func _physics_process(delta):
 	if grabbedObject && grabbedObject.is_in_group("useable"):
 		if useObject:
 			grabbedObject.active = true
-		if !useObject:
+		elif !useObject:
 			grabbedObject.active = false
 	if grabbedObject && !grabbed:
 		handGrab.set_node_b("")
@@ -110,8 +110,13 @@ func _physics_process(delta):
 		grabbedObject = null
 	if triggerDown:
 		applyGrabShader()
+	if grabbed:
+		handcollider.disabled = true
+		timer.start(.1)
 #	if !grabbed:
 #		handArea.get_overlapping_bodies()
+
+
 			
 func _on_Hand_button_pressed(button):
 	if button == 2:
@@ -186,6 +191,10 @@ func _on_HandArea_area_shape_entered(_areaId, area, _stupidParam, _stupidParam2)
 
 func _on_HandArea_area_shape_exited(_areaId, _area, _stupidParam, _stupidParam2):
 	collidedArea = null
+	
+func _on_collisionTimer_timeout():
+	if !grabbed:
+		handcollider.disabled = true # used to be false
 
 func grab():
 	if isCollided && !grabbed && !climbing:
@@ -245,8 +254,7 @@ func pull():
 		distance = sqrt( pow(handOrigin.x-rayCollidedNodeOrigin.x, 2)+pow(handOrigin.z-rayCollidedNodeOrigin.z, 2) )
 		# print(distance)
 		if distance < (pullInterval/50)+.4:
-			rayCollidedNode.global_transform.origin = global_transform.origin
-			rayCollidedNode.rotation_degrees = rotation_degrees
+			rayCollidedNode.global_transform = global_transform
 		else:
 			pullInterval += 1
 		if !rayCollidedtmp || !gravtmp || !damptmp:

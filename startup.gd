@@ -32,8 +32,8 @@ func _ready():
 	# 	interface = ARVRServer.find_interface("OVRMobile")
 	
 	# startup menu logic
-	roomsbutton.connect("pressed",self,'loadrooms')
-	obstaclecoursebutton.connect("pressed",self,'loadobstaclecourse')
+	# roomsbutton.connect("pressed",self,'loadrooms')
+	# obstaclecoursebutton.connect("pressed",self,'loadobstaclecourse')
 	
 
 func _process(delta_t):
@@ -70,7 +70,7 @@ func _initialize_ovr_mobile_arvr_interface():
 		ovr_init_config = load("res://addons/godot_ovrmobile/OvrInitConfig.gdns");
 		if (ovr_init_config):
 			ovr_init_config = ovr_init_config.new()
-			ovr_init_config.set_render_target_size_multiplier(1) # setting to 1 here is the default
+			ovr_init_config.set_render_target_size_multiplier(.8) # setting to 1 here is the default
 
 		# Configure the interface init parameters.
 		if arvr_interface.initialize():

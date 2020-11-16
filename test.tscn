@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 10, 10, 10 )
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( -5, 5, 5, 5, 5, -5, 5, 5, 5, -5, 5, -5, -5, -5, 5, 5, -5, -5, 5, -5, 5, -5, -5, -5, 5, 5, 5, -5, 5, -5, 5, 5, -5, -5, 5, 5, 5, -5, 5, -5, -5, -5, 5, -5, -5, -5, -5, 5, 5, 5, 5, -5, -5, 5, -5, 5, 5, 5, -5, 5, 5, 5, -5, -5, -5, -5, -5, 5, -5, 5, -5, -5 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="RigidBody" type="RigidBody" parent="."]
+continuous_cd = true
+can_sleep = false
+
+[node name="MeshInstance2" type="MeshInstance" parent="RigidBody"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2" type="RigidBody" parent="."]
+visible = false
+mode = 1
+can_sleep = false
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.9 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 4 )

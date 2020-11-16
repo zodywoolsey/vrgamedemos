@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://levels/targettest.gd" type="Script" id=1]
+
+[sub_resource type="NavigationMesh" id=1]
+vertices = PoolVector3Array( -2.2, 0.4, -2.2, -2.2, 0.4, 2.3, 2.3, 0.4, 2.3, 2.3, 0.4, -2.2 )
+polygons = [ PoolIntArray( 3, 2, 0 ), PoolIntArray( 0, 2, 1 ) ]
+agent/radius = 0.2
+
+[sub_resource type="OpenSimplexNoise" id=2]
+seed = 7
+octaves = 9
+period = 2.1
+persistence = 0.553
+lacunarity = 1.26
+
+[sub_resource type="NoiseTexture" id=3]
+flags = 35
+width = 8
+seamless = true
+noise = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.388235, 0.603922, 0, 1 )
+albedo_texture = SubResource( 3 )
+uv1_triplanar = true
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+size = Vector3( 5, 1, 5 )
+
+[sub_resource type="ConvexPolygonShape" id=9]
+points = PoolVector3Array( -2.5, 0.5, 2.5, 2.5, 0.5, -2.5, 2.5, 0.5, 2.5, -2.5, 0.5, -2.5, -2.5, -0.5, 2.5, 2.5, -0.5, -2.5, 2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, 0.5, 2.5, -2.5, 0.5, -2.5, 2.5, 0.5, -2.5, -2.5, 0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, -0.5, -2.5, -2.5, -0.5, 2.5, 2.5, 0.5, 2.5, -2.5, -0.5, 2.5, -2.5, 0.5, 2.5, 2.5, -0.5, 2.5, 2.5, 0.5, -2.5, -2.5, -0.5, -2.5, -2.5, 0.5, -2.5, 2.5, -0.5, -2.5 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=7]
+material = SubResource( 6 )
+size = Vector3( 0.5, 2, 0.5 )
+
+[sub_resource type="ConvexPolygonShape" id=8]
+points = PoolVector3Array( -0.25, 1, 0.25, 0.25, 1, -0.25, 0.25, 1, 0.25, -0.25, 1, -0.25, -0.25, -1, 0.25, 0.25, -1, -0.25, 0.25, -1, 0.25, -0.25, -1, -0.25, 0.25, 1, 0.25, -0.25, 1, -0.25, 0.25, 1, -0.25, -0.25, 1, 0.25, 0.25, -1, 0.25, -0.25, -1, -0.25, 0.25, -1, -0.25, -0.25, -1, 0.25, 0.25, 1, 0.25, -0.25, -1, 0.25, -0.25, 1, 0.25, 0.25, -1, 0.25, 0.25, 1, -0.25, -0.25, -1, -0.25, -0.25, 1, -0.25, 0.25, -1, -0.25 )
+
+[node name="shooter_test" type="Spatial"]
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+shape = SubResource( 9 )
+
+[node name="StaticBody2" type="StaticBody" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.906314, -2.22202 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.906314, -2.22202 )
+shape = SubResource( 8 )

@@ -13,6 +13,7 @@ points = PoolVector3Array( -0.3, 0.5, 0.05, 0.3, 0.5, -0.05, 0.3, 0.5, 0.05, -0.
 extents = Vector3( 0, 0, 0 )
 
 [node name="guy" type="Spatial"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="torsobody" type="RigidBody" parent="." groups=[
 "grabbable",
@@ -21,6 +22,8 @@ transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.18557e
 mass = 40.0
 continuous_cd = true
 can_sleep = false
+linear_damp = 0.8
+angular_damp = 0.8
 
 [node name="MeshInstance" type="MeshInstance" parent="torsobody"]
 mesh = SubResource( 1 )
@@ -101,7 +104,6 @@ transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.18557e
 nodes/node_a = NodePath("../KinematicBody")
 nodes/node_b = NodePath("../torsobody")
 linear_limit_x/enabled = false
-linear_spring_x/enabled = true
 linear_spring_x/stiffness = 500.0
 linear_spring_x/damping = 50.0
 angular_limit_x/upper_angle = 20.0
@@ -120,7 +122,6 @@ angular_spring_y/stiffness = 200.0
 angular_spring_y/damping = 5.0
 linear_limit_z/enabled = false
 linear_limit_z/upper_distance = 10.0
-linear_spring_z/enabled = true
 linear_spring_z/stiffness = 500.0
 linear_spring_z/damping = 50.0
 angular_limit_z/upper_angle = 20.0

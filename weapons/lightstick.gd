@@ -1,6 +1,7 @@
 extends RigidBody
 
 var t = 0
+onready var life = randi()%120
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,5 +11,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	t += delta
-	if t > 30:
+	if t > 30+(life):
 		queue_free()

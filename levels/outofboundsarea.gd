@@ -19,5 +19,5 @@ func _on_Area_body_entered(body):
 	if body.is_in_group('mainbody') || body.is_in_group('grabbable'):
 		body.global_transform.origin.y = 1
 		if body.get_class() == "RigidBody":
-			body.linear_velocity = body.linear_velocity*0
-			body.angular_velocity = body.angular_velocity*0
+			body.linear_velocity.y = 0
+			body.angular_velocity = body.angular_velocity*.5
