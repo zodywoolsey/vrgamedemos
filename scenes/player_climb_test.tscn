@@ -5,8 +5,9 @@
 [ext_resource path="res://materials/handrayblue.tres" type="Material" id=3]
 [ext_resource path="res://scripts_gd/player.gd" type="Script" id=4]
 [ext_resource path="res://materials/handrayred.tres" type="Material" id=5]
-[ext_resource path="res://uimeshtest/RayCast.gd" type="Script" id=6]
-[ext_resource path="res://audio/fx/snow_step_retro.wav" type="AudioStream" id=7]
+[ext_resource path="res://player/uimeshtest/RayCast.gd" type="Script" id=6]
+[ext_resource path="res://player/uimeshtest/audio/fx/snow_step_retro.wav" type="AudioStream" id=7]
+
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.1

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://uimeshtest/colorpicker.gd" type="Script" id=1]
+
+[node name="colorpicker" type="Control"]
+margin_right = 329.0
+margin_bottom = 478.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 312.0
+margin_bottom = 466.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="color_changed" from="ColorPicker" to="." method="_on_ColorPicker_color_changed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ambientmain_0.ogg-c701cc38bd0f0a8987592415d82d576c.oggstr"
+
+[deps]
+
+source_file="res://player/uimeshtest/audio/music/ambientmain_0.ogg"
+dest_files=[ "res://.import/ambientmain_0.ogg-c701cc38bd0f0a8987592415d82d576c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

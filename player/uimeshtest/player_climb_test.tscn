@@ -1,0 +1,204 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://player/climbhand.gd" type="Script" id=1]
+[ext_resource path="res://player/HandRay.gd" type="Script" id=2]
+[ext_resource path="res://player/uimeshtest/handrayblue.tres" type="Material" id=3]
+[ext_resource path="res://player/player.gd" type="Script" id=4]
+[ext_resource path="res://player/uimeshtest/handrayred.tres" type="Material" id=5]
+[ext_resource path="res://player/uimeshtest/RayCast.gd" type="Script" id=6]
+[ext_resource path="res://player/uimeshtest/audio/fx/snow_step_retro.wav" type="AudioStream" id=7]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.1
+height = 0.6
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.05
+
+[sub_resource type="BoxShape" id=3]
+margin = 0.001
+extents = Vector3( 0.04, 0.04, 0.04 )
+
+[sub_resource type="SpatialMaterial" id=4]
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+size = Vector3( 0.06, 0.06, 0.06 )
+
+[sub_resource type="BoxShape" id=6]
+resource_local_to_scene = true
+margin = 0.001
+extents = Vector3( 0.03, 0.03, 0.03 )
+
+[sub_resource type="CubeMesh" id=7]
+size = Vector3( 0.01, 10, 0.01 )
+
+[sub_resource type="CubeMesh" id=8]
+flip_faces = true
+size = Vector3( 0.01, 5, 0.01 )
+
+[node name="playerroot" type="Spatial"]
+
+[node name="rigidplayer" type="KinematicBody" parent="." groups=[
+"mainbody",
+"playerbody",
+]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 4 )
+
+[node name="playerbody" type="CollisionShape" parent="rigidplayer"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.4, 0 )
+shape = SubResource( 1 )
+
+[node name="headcollider" type="CollisionShape" parent="rigidplayer"]
+shape = SubResource( 2 )
+
+[node name="player" type="ARVROrigin" parent="rigidplayer"]
+
+[node name="ARVRCamera" type="ARVRCamera" parent="rigidplayer/player"]
+current = true
+far = 40.0
+
+[node name="rightHand" type="ARVRController" parent="rigidplayer/player"]
+controller_id = 2
+script = ExtResource( 1 )
+
+[node name="HandArea" type="Area" parent="rigidplayer/player/rightHand"]
+input_ray_pickable = false
+gravity_vec = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidplayer/player/rightHand/HandArea"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidplayer/player/rightHand/HandArea/CollisionShape"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="HandGrab" type="Generic6DOFJoint" parent="rigidplayer/player/rightHand"]
+nodes/node_a = NodePath("../HandBody")
+
+[node name="HandBody" type="RigidBody" parent="rigidplayer/player/rightHand"]
+collision_layer = 5
+collision_mask = 5
+mode = 3
+mass = 15.0
+custom_integrator = true
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="handcollider" type="CollisionShape" parent="rigidplayer/player/rightHand/HandBody"]
+shape = SubResource( 6 )
+
+[node name="HandRay" type="RayCast" parent="rigidplayer/player/rightHand/HandBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+visible = false
+cast_to = Vector3( 0, 10, 0 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidplayer/player/rightHand/HandBody/HandRay"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+cast_shadow = 0
+mesh = SubResource( 7 )
+material/0 = ExtResource( 5 )
+
+[node name="UiRay" type="RayCast" parent="rigidplayer/player/rightHand/HandBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+visible = false
+cast_to = Vector3( 0, 5, 0 )
+collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidplayer/player/rightHand/HandBody/UiRay"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+cast_shadow = 0
+mesh = SubResource( 8 )
+material/0 = ExtResource( 3 )
+
+[node name="collisionTimer" type="Timer" parent="rigidplayer/player/rightHand"]
+wait_time = 0.1
+one_shot = true
+
+[node name="leftHand" type="ARVRController" parent="rigidplayer/player"]
+script = ExtResource( 1 )
+
+[node name="HandArea" type="Area" parent="rigidplayer/player/leftHand"]
+input_ray_pickable = false
+gravity_vec = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidplayer/player/leftHand/HandArea"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidplayer/player/leftHand/HandArea/CollisionShape"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="HandGrab" type="Generic6DOFJoint" parent="rigidplayer/player/leftHand"]
+nodes/node_a = NodePath("../HandBody")
+
+[node name="HandBody" type="RigidBody" parent="rigidplayer/player/leftHand"]
+collision_layer = 5
+collision_mask = 5
+mode = 3
+mass = 15.0
+custom_integrator = true
+continuous_cd = true
+contact_monitor = true
+can_sleep = false
+
+[node name="handcollider" type="CollisionShape" parent="rigidplayer/player/leftHand/HandBody"]
+shape = SubResource( 6 )
+
+[node name="HandRay" type="RayCast" parent="rigidplayer/player/leftHand/HandBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+visible = false
+cast_to = Vector3( 0, 10, 0 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidplayer/player/leftHand/HandBody/HandRay"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+cast_shadow = 0
+mesh = SubResource( 7 )
+material/0 = ExtResource( 5 )
+
+[node name="UiRay" type="RayCast" parent="rigidplayer/player/leftHand/HandBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+visible = false
+cast_to = Vector3( 0, 5, 0 )
+collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidplayer/player/leftHand/HandBody/UiRay"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+cast_shadow = 0
+mesh = SubResource( 8 )
+material/0 = ExtResource( 3 )
+
+[node name="collisionTimer" type="Timer" parent="rigidplayer/player/leftHand"]
+wait_time = 0.1
+one_shot = true
+
+[node name="groundcheck" type="RayCast" parent="rigidplayer"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="rigidplayer"]
+stream = ExtResource( 7 )
+volume_db = -7.0
+[connection signal="button_pressed" from="rigidplayer/player/rightHand" to="rigidplayer/player/rightHand" method="_on_Hand_button_pressed"]
+[connection signal="button_release" from="rigidplayer/player/rightHand" to="rigidplayer/player/rightHand" method="_on_Hand_button_release"]
+[connection signal="area_shape_entered" from="rigidplayer/player/rightHand/HandArea" to="rigidplayer/player/rightHand" method="_on_HandArea_area_shape_entered"]
+[connection signal="area_shape_exited" from="rigidplayer/player/rightHand/HandArea" to="rigidplayer/player/rightHand" method="_on_HandArea_area_shape_exited"]
+[connection signal="body_entered" from="rigidplayer/player/rightHand/HandArea" to="rigidplayer/player/rightHand" method="_on_HandArea_body_entered"]
+[connection signal="body_exited" from="rigidplayer/player/rightHand/HandArea" to="rigidplayer/player/rightHand" method="_on_HandArea_body_exited"]
+[connection signal="timeout" from="rigidplayer/player/rightHand/collisionTimer" to="rigidplayer/player/rightHand" method="_on_collisionTimer_timeout"]
+[connection signal="button_pressed" from="rigidplayer/player/leftHand" to="rigidplayer/player/leftHand" method="_on_Hand_button_pressed"]
+[connection signal="button_release" from="rigidplayer/player/leftHand" to="rigidplayer/player/leftHand" method="_on_Hand_button_release"]
+[connection signal="area_shape_entered" from="rigidplayer/player/leftHand/HandArea" to="rigidplayer/player/leftHand" method="_on_HandArea_area_shape_entered"]
+[connection signal="area_shape_exited" from="rigidplayer/player/leftHand/HandArea" to="rigidplayer/player/leftHand" method="_on_HandArea_area_shape_exited"]
+[connection signal="body_entered" from="rigidplayer/player/leftHand/HandArea" to="rigidplayer/player/leftHand" method="_on_HandArea_body_entered"]
+[connection signal="body_exited" from="rigidplayer/player/leftHand/HandArea" to="rigidplayer/player/leftHand" method="_on_HandArea_body_exited"]
+[connection signal="timeout" from="rigidplayer/player/leftHand/collisionTimer" to="rigidplayer/player/leftHand" method="_on_collisionTimer_timeout"]

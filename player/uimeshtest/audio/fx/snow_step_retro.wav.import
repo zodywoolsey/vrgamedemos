@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snow_step_retro.wav-796467ac68db397c487c3d4c7b1d4734.sample"
+
+[deps]
+
+source_file="res://player/uimeshtest/audio/fx/snow_step_retro.wav"
+dest_files=[ "res://.import/snow_step_retro.wav-796467ac68db397c487c3d4c7b1d4734.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
